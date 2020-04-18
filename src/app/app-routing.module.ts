@@ -15,7 +15,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  // the landing page of the App is changed to Product Component for developing when going productive chnage to other Landingpage
+  {path: '', component: ProductsComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'shopping-cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},

@@ -23,7 +23,7 @@ export class ProductFormComponent implements OnInit {
     private productService: ProductService
   ) {
     //this.categories$ = categoryService.getCategories().valueChanges();
-    this.categories$ = categoryService.getCategories().snapshotChanges().pipe(
+    this.categories$ = categoryService.getAll().snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} }));
       })

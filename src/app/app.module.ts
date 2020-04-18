@@ -26,11 +26,12 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
-import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './shared/components/product-quantity/product-quantity.component';
 import { AdminAuthGuard as AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { SortableDirective } from './sortable.directive';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { SortableDirective } from './sortable.directive';
     ProductCardComponent,
     ProductQuantityComponent,
     ProductFormComponent,
-    SortableDirective
+    SortableDirective,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,6 @@ import { SortableDirective } from './sortable.directive';
     AngularFireAuthModule,
     NgbModule,
     FormsModule
-
   ],
   providers: [
     AuthService,
