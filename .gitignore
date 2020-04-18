@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#Firebase settings file need to be added individually 
+enviroments/enviroment.prod.ts
+enviroments/enviroment.ts
+
