@@ -27,10 +27,16 @@ export class ProductCardComponent {
   }
 
   getQuantity() {
-    if (this.shoppingCart === undefined) return 0;
-
-    const item = this.shoppingCart.items[this.product.key];
-    return item ? item.quantity : 0;
+    if (this.shoppingCart) {
+      if (this.shoppingCart.items) {
+        const item = this.shoppingCart.items[this.product.key];
+        return item ? item.quantity : 0;
+      } else {
+        return 0;
+      }
+    } else {
+      return 0;
+    }
   }
 
 }

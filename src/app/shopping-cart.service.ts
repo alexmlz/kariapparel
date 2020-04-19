@@ -27,7 +27,9 @@ export class ShoppingCartService {
   async getCartPromise(): Promise<Observable<ShoppingCart>> {
     const cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId).valueChanges().pipe(
-      map( (x: any) => new ShoppingCart(x.items))
+      map( (x: any)  => {
+        if (x) {return new ShoppingCart(x.items)}
+      })
     );
   }
 
@@ -58,9 +60,9 @@ export class ShoppingCartService {
     const cartId = await this.getOrCreateCartId();
     const item$ = this.getItem(cartId, product.key);
     item$.valueChanges()
-    .pipe(take(1)).subscribe((item: ShoppingCartItem) => {
+    .pipe(take(1)).subscribe((item: any) => {
       // tslint:disable-next-line: curly
-      if (!item) item.quantity = 0;
+      if (!item) item = {quantity: 0};
       // vs code is showing error but its working need to check ng build if its working or not
       item$.update({ product, quantity: (item.quantity || 0) + change});
     });
