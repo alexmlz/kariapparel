@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class ProductFormComponent implements OnInit {
   categories$;
   id;
-  product: Product = { title: '', description: '', price: null, category: '', imageUrl: '' };
+  product: Product = {key: '', title: '', description: '', price: null, category: '', imageUrl: '' };
 
   constructor(
     private router: Router,
