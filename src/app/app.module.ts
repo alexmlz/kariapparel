@@ -28,7 +28,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { ProductCardComponent } from './product-card/product-card.component';
-import { ProductQuantityComponent } from './shared/components/product-quantity/product-quantity.component';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { AdminAuthGuard as AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { SortableDirective } from './sortable.directive';

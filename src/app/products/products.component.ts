@@ -13,21 +13,26 @@ import { ShoppingCart } from '../models/shopping-cart';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[]  = [];
   cart$: Observable<ShoppingCart>;
   category: string;
-  cart: any;
-  subscription1: Subscription;
 
   constructor(
-    route: ActivatedRoute,
-    productService: ProductService,
+    private route: ActivatedRoute,
+    private productService: ProductService,
     private cartService: ShoppingCartService
     ) {
-    this.subscription = productService.getAll().snapshotChanges()
+  }
+
+  async ngOnInit() {
+   this.cart$ = await this.cartService.getCartPromise();
+   this.populateProducts();
+  }
+
+  private populateProducts() {
+    this.productService.getAll().snapshotChanges()
     .pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() as Product }))
@@ -35,27 +40,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
     ).subscribe(products => {
       this.products = products;
 
-      route.queryParamMap.subscribe(params => {
+      this.route.queryParamMap.subscribe(params => {
         this.category = params.get('category');
-        this.filteredProducts = (this.category) ?
-          this.products.filter(p => p.category === this.category) :
-          this.products;
+        this.applyFilter();
       });
     });
   }
 
-  async ngOnInit() {
-   this.cart$ = await this.cartService.getCartPromise();
-/*       this.subscription1 = (await this.cartService.getCart()).valueChanges()
-      .pipe().subscribe(cart => {
-        debugger;
-        this.cart = cart;
-      }); */
+  private applyFilter() {
+    this.filteredProducts = (this.category) ?
+    this.products.filter(p => p.category === this.category) :
+    this.products;
   }
-
-  ngOnDestroy() {
-    //this.subscription1.unsubscribe();
-  }
-
-
 }

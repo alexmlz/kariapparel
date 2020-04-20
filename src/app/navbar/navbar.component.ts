@@ -14,12 +14,13 @@ import { map } from 'rxjs/operators';
 export class NavbarComponent implements OnInit {
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
+
   constructor(private auth: AuthService, private cartService: ShoppingCartService) {
    }
 
    async ngOnInit() {
-    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.cart$ = await this.cartService.getCartPromise();
+     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+     this.cart$ = await this.cartService.getCartPromise();
    }
 
   logout() {
