@@ -27,6 +27,7 @@ export class ProductCardComponent {
   }
 
   getQuantity() {
+    debugger;
     if (this.shoppingCart) {
       if (this.shoppingCart.items) {
         const item = this.shoppingCart.items[this.product.key];

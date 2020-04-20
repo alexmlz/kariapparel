@@ -27,8 +27,10 @@ export class ShoppingCartService {
   async getCartPromise(): Promise<Observable<ShoppingCart>> {
     const cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId).valueChanges().pipe(
-      map( (x: any)  => {
-        if (x) {return new ShoppingCart(x.items)}
+      map( (x: any ) => {
+        if (x) {
+          return new ShoppingCart(x.items);
+        }
       })
     );
   }
@@ -41,10 +43,9 @@ export class ShoppingCartService {
     const cartId = localStorage.getItem('cartId');
     // tslint:disable-next-line: curly
     if (cartId) return cartId;
-
     const result = await this.create();
     localStorage.setItem('cartId', result.key);
-    return cartId;
+    return result.key;
 
   }
 
