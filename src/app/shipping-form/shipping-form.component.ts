@@ -1,3 +1,4 @@
+import { Shipping } from './../models/shipping';
 import { ShoppingCart } from './../models/shopping-cart';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -14,7 +15,10 @@ import { Order } from '../models/order';
 export class ShippingFormComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line: no-input-rename
   @Input('cart') cart: ShoppingCart;
-  shipping = {};
+  shipping: Shipping = {  name: '',
+    addressLine1: '',
+    addressLine2: 'string',
+    city: 'string'};
   userId: string;
   userSubscription: Subscription;
   constructor(

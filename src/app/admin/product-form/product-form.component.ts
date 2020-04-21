@@ -4,14 +4,13 @@ import { ProductService } from './../../product.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/category.service';
 import { map, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent {
   categories$;
   id;
   product: Product = {key: '', title: '', description: '', price: null, category: '', imageUrl: '' };
@@ -22,7 +21,7 @@ export class ProductFormComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService
   ) {
-    //this.categories$ = categoryService.getCategories().valueChanges();
+    // this.categories$ = categoryService.getCategories().valueChanges();
     this.categories$ = categoryService.getAll().snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} }));
@@ -45,14 +44,11 @@ export class ProductFormComponent implements OnInit {
   }
 
   delete() {
+    // tslint:disable-next-line: curly
     if (!confirm('Are you sure you want to delete this product')) return;
 
-      this.productService.delete(this.id);
-      this.router.navigate(['/admin/products']);
-
-  }
-
-  ngOnInit(): void {
+    this.productService.delete(this.id);
+    this.router.navigate(['/admin/products']);
   }
 
 }
