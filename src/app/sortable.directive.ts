@@ -1,5 +1,5 @@
 import { Directive, Input, Output, EventEmitter } from '@angular/core';
-import { SortDirection, SortEvent } from './models/sort';
+import { SortDirection, SortEvent } from 'shared/models/sort';
 
 const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
 
