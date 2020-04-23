@@ -1,16 +1,16 @@
 <div class="row no-gutters">
-    <div class="col-2">
+    <div class="col col-sm-auto">
         <button 
-        class="btn btn-secondary btn-block"
+        class="btn btn-secondary btn-sm btn-block"
         (click)="removeFromCart()"
         >-</button>
     </div>
     <div class="col text-center">
-        {{ shoppingCart.getQuantity(product) }} in cart
+        {{ shoppingCart.getQuantity(product) }}
     </div>
-    <div class="col-2">
+    <div class="col col-sm-auto">
         <button 
         (click)="addToCart()" 
-        class="btn btn-secondary btn-block">+</button>
+        class="btn btn-secondary btn-sm btn-block">+</button>
     </div>
 </div>

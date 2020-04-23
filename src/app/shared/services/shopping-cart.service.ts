@@ -10,7 +10,6 @@ import { ShoppingCart } from 'shared/models/shopping-cart';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-
   constructor(private db: AngularFireDatabase) { }
 
   async getCartPromise(): Promise<Observable<ShoppingCart>> {
@@ -51,10 +50,11 @@ export class ShoppingCartService {
     const cartId = localStorage.getItem('cartId');
     // tslint:disable-next-line: curly
     if (cartId) return cartId;
+
     const result = await this.create();
-    localStorage.setItem('cartId', result.key);
-    return result.key;
-  }
+    localStorage.setItem('cartId',  result.key );
+    return  result.key;
+}
 
   private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
