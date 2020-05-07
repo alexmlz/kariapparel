@@ -1,3 +1,4 @@
+import { FirestorageUploadService } from './services/firestorage-upload.service';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,10 @@ import { UserService } from './services/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { NgxPayPalModule } from 'ngx-paypal';
+// import * as $ from 'jquery';
 
 
 @NgModule({
@@ -30,7 +35,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AppRoutingModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FontAwesomeModule
+    AngularFireStorageModule,
+    FontAwesomeModule,
+    NgxPayPalModule
   ],
   exports: [
     ProductCardComponent,
@@ -41,7 +48,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     CommonModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FontAwesomeModule
+    AngularFireStorageModule,
+    FontAwesomeModule,
+    NgxPayPalModule
   ],
   providers: [
     AuthService,
@@ -50,7 +59,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     CategoryService,
     ProductService,
     ShoppingCartService,
-    OrderService
+    OrderService,
+    FirestorageUploadService
   ]
 })
 export class SharedModule { }

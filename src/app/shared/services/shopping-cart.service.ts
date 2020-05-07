@@ -23,6 +23,11 @@ export class ShoppingCartService {
     );
   }
 
+  getCartItems(cartId) {
+    // const cartId = await this.getOrCreateCartId();
+    return this.db.list('/shopping-carts/' + cartId + '/items');
+  }
+
   async addToCart(product: Product) {
     this.updateItem(product, 1);
   }
@@ -34,6 +39,14 @@ export class ShoppingCartService {
   async clearCart() {
     const cartId = await this.getOrCreateCartId();
     this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
+  addPaymentInfo(paymentDetails) {
+    const cartId = localStorage.getItem('cartId');
+    return this.db.object('/shopping-carts/' + cartId + '/paymentDetails').set({
+      paymentInfo: paymentDetails,
+      payed: true
+    });
   }
 
   private create() {
