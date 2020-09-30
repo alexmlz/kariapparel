@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/commerceshop",
+    "public": "dist/kariapparel",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -4,16 +4,16 @@
 
 export const environment = {
   production: false,
-  firebase : {
-    apiKey: 'AIzaSyCC9m_YoEjGLaZvHaGat8nJ0iuvOT1eXPA',
-    authDomain: 'commerceshop-2caed.firebaseapp.com',
-    databaseURL: 'https://commerceshop-2caed.firebaseio.com',
-    projectId: 'commerceshop-2caed',
-    storageBucket: 'commerceshop-2caed.appspot.com',
-    messagingSenderId: '1003442358910',
-    appId: '1:1003442358910:web:2799de5b20a5b3724c662f',
-    measurementId: 'G-9MVBDY8GS2'
-  }
+  firebase: {
+    apiKey: 'AIzaSyDN4XeFnmGlqOyaMKFsaP-DnqWhN4iEdQ4',
+    authDomain: 'kariapparel.firebaseapp.com',
+    databaseURL: 'https://kariapparel.firebaseio.com',
+    projectId: 'kariapparel',
+    storageBucket: 'kariapparel.appspot.com',
+    messagingSenderId: '120455656682',
+    appId: '1:120455656682:web:dac6b4504fdda525d95393',
+    measurementId: 'G-169T7XP2Q1'
+  },
 };
 
 /*
